@@ -1,4 +1,3 @@
----
 
 ```markdown
 # 🩺 Patient Manager API
