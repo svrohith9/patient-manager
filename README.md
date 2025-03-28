@@ -1,5 +1,3 @@
-Sure! Here's a **short and clean `README.md`** tailored for your [`patient-manager`](https://github.com/svrohith9/patient-manager) Spring Boot app:
-
 ---
 
 ```markdown
