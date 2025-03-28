@@ -1,0 +1,17 @@
+### PUT request to updatePatient
+PUT http://localhost:8080/patients/v1/00000000-0000-0000-0000-000000000002
+Content-Type: application/json
+
+{
+  "firstName": "XXXX",
+  "lastName": "ZZZZ",
+  "phoneNumber": "11111111",
+  "email": "asx.X@aexample.com",
+  "registeredDate": "2025/03/25",
+  "gender": "MALE",
+  "address": "123 Main St, Springfield",
+  "birthDate": "2000-01-01",
+  "asd": ""
+}
+
+###
