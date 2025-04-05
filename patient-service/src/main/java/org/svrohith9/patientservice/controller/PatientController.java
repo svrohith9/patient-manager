@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/patients/v1")
-@CrossOrigin(origins = {"http://localhost:8080","https://editor.swagger.io"})
+@CrossOrigin(origins = {"*"})
 @Tag(name = "Patient", description = "Patient Controller")
 public class PatientController {
 
