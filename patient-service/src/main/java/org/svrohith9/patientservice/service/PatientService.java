@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.svrohith9.patientservice.exception.EmailAlreadyExistException;
 import org.svrohith9.patientservice.exception.PatientNotFoundException;
+import org.svrohith9.patientservice.grpc.BillingServiceGrpcClient;
 import org.svrohith9.patientservice.mapper.PatientMapper;
 import org.svrohith9.patientservice.model.DTO.PatientRequestDTO;
 import org.svrohith9.patientservice.model.DTO.PatientResponseDTO;
@@ -17,8 +18,13 @@ import java.util.UUID;
 @Service
 public class PatientService {
 
+    private final BillingServiceGrpcClient billingServiceGrpcClient;
     @Autowired
     private PatientRepository patientRepository;
+
+    public PatientService(BillingServiceGrpcClient billingServiceGrpcClient) {
+        this.billingServiceGrpcClient = billingServiceGrpcClient;
+    }
 
     public List<PatientResponseDTO> getPatients() {
         List<Patient> patients = patientRepository.findAll();
@@ -31,6 +37,7 @@ public class PatientService {
             throw new EmailAlreadyExistException("Duplicate value detected, A Person exists with same email.");
         }
         Patient newPatient = patientRepository.save(PatientMapper.toEntity(patientRequestDTO));
+        billingServiceGrpcClient.createBillingAccount(String.valueOf(newPatient.getId()), newPatient.getFirstName() + " " + newPatient.getLastName(), newPatient.getEmail());
         return PatientMapper.toDTO(newPatient);
     }
 
