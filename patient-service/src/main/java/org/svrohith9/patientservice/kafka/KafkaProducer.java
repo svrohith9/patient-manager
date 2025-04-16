@@ -23,7 +23,6 @@ public class KafkaProducer {
 
         PatientEvent event = PatientEvent.newBuilder().setPatientId(String.valueOf(patient.getId())).setName(patient.getFirstName() + " " + patient.getLastName()).setEmail(patient.getEmail()).setEventType("PATIENT_CREATED").build();
         try {
-            System.out.println(event.toByteArray().toString());
             CompletableFuture<SendResult<String, byte[]>> patientEvent = kafkaTemplate.send("patient", event.toByteArray());
             log.info("Patient event sent: {}", patientEvent.join());
         } catch (Exception e) {
