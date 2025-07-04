@@ -1,5 +1,5 @@
 
-```markdown
+
 # 🩺 Patient Manager API
 
 A Spring Boot REST API to manage patient records with validation, clean architecture, and PostgreSQL integration.
@@ -76,7 +76,3 @@ mvn spring-boot:run
 
 🧑‍💻 Built by [@svrohith9](https://github.com/svrohith9)
 ```
-
----
-
-Let me know if you want this version to include badges, Docker support, or Swagger/OpenAPI integration next!
