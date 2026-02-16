@@ -1,0 +1,44 @@
+# Build outputs
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Log files
+*.log
+logs/
+
+# Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# Environment files
+.env
+.env.local
+*.local
+
+# Kubernetes
+*.kubeconfig
+
+# Temp files
+*.tmp
+*.bak

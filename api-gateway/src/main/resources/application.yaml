@@ -4,10 +4,45 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: patient-service-route
-          uri: http://localhost:8080
+        - id: patient-service
+          uri: http://patient-service:8080
           predicates:
-            - Path=/patients/v1/**
+            - Path=/api/v1/**
+          filters:
+            - StripPrefix=0
+            - AddRequestHeader=X-Gateway,ApiGateway
+            - AddResponseHeader=X-Content-Type-Options,nosniff
+            - AddResponseHeader=X-Frame-Options,DENY
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: false
+            maxAge: 3600
 
 server:
-  port: 4000
+  port: ${SERVER_PORT:4000}
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when_authorized
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: INFO
