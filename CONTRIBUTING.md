@@ -1,50 +1,32 @@
-# Contributing to Patient Manager
+# Contributing
 
-Thank you for your interest in contributing!
+Thanks for contributing to Patient Manager.
 
-## How to Contribute
+## Setup
 
-### Reporting Bugs
-1. Check if the bug already exists in issues
-2. Create a new issue with:
-   - Clear title
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - Environment details
+- Install Java 21+, Maven, Docker.
+- Start dependencies with `docker compose -f docker-compose.yaml up -d`.
+- Run/edit services independently.
 
-### Suggesting Features
-1. Open a new issue with `[Feature Request]` prefix
-2. Describe the feature
-3. Explain use cases
+## Development guidelines
 
-### Pull Requests
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Run tests: `mvn test`
-5. Commit with clear messages
-6. Push to your fork
-7. Open a Pull Request
+- Keep PRs scoped (prefer one service per PR when possible)
+- Add/update docs for endpoint or config changes
+- Avoid breaking API contracts without explicit note
 
-## Development Setup
+## Validation before PR
+
+Run tests in touched modules:
 
 ```bash
-# Clone the repo
-git clone https://github.com/svrohith9/patient-manager.git
-cd patient-manager
-
-# Build
-mvn clean install
-
-# Run tests
+./mvnw test
+# or
 mvn test
 ```
 
-## Code Style
-- Follow Java conventions
-- Use meaningful variable names
-- Add comments for complex logic
-- Write unit tests for new features
+## Pull request checklist
 
-## License
-By contributing, you agree that your contributions will be licensed under the MIT License.
+- [ ] Problem and solution explained
+- [ ] Tests/builds run for touched modules
+- [ ] API/config docs updated
+- [ ] No secrets committed
